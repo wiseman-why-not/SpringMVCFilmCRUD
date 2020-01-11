@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +8,22 @@
 <title>Film Search</title>
 </head>
 <body>
-<h1>Here is the film you requested</h1>
-<c:choose>
-<c:when test="${!empty film }"> ${film}
-</c:when>
-<c:otherwise><h3> NO FILM FOUND</h3></c:otherwise>
+	<h1>Film App!</h1>
+	<c:choose>
+		<c:when test="${!empty film }">
+			<table></table>
+			<tr>
+				<td>${film.id}</td>
+				<td>${film.title}</td>
+				<td>${film.description}</td>
+				<td>${film.releaseYear }</td>
+				<td>${film.rating }</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<h3>NO FILM SELECTED</h3>
+		</c:otherwise>
 
-</c:choose>
+	</c:choose>
 </body>
 </html>

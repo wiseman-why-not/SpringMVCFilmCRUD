@@ -18,7 +18,7 @@ public class FilmController {
 
 	@RequestMapping("home.do")
 	public String home() {
-		return "WEB-INF/home.jsp";
+		return "home.jsp";
 	}
 	
 	@RequestMapping("FilmSelect.do")
@@ -31,4 +31,25 @@ public class FilmController {
 		mv.addObject("film", film );
 		return mv;
 	}
+	
+	@RequestMapping("CreateFilm.do")
+	public ModelAndView createFilm( @RequestParam("title") String title, 
+									@RequestParam("description") String description, 
+									@RequestParam("releaseYear") int releaseYear,
+									@RequestParam("rentalDuration") int rentalDuration,
+									@RequestParam("rentalRate") double rentalRate,
+									@RequestParam("lengthOfMovie") int length,
+									@RequestParam("replacementCost") double replacementCost, 
+									@RequestParam("rating") String rating, 
+									@RequestParam("specialFeatures") String specialFeatures
+									) {
+		Film film = new Film(title, description, releaseYear, 1, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures);
+		dao = new FilmDaoImpl();
+		ModelAndView mv = new ModelAndView();
+		film = dao.createFilm(film);
+		mv.setViewName("FilmSearch.jsp");
+		mv.addObject("film", film );
+		return mv;
+	}
+	
 }
