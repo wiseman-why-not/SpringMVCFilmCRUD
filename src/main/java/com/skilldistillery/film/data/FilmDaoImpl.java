@@ -70,7 +70,8 @@ public class FilmDaoImpl  implements DatabaseAccessor {
 	@Override
 	public Film findFilmById(int filmId) {
 		int id = filmId;
-		String sqlTxt = "SELECT * FROM actor JOIN film_actor ON actor.id = film_actor.actor_id JOIN film ON film.id = film_actor.film_id WHERE film.id = ?";
+		//String sqlTxt = "SELECT * FROM actor JOIN film_actor ON actor.id = film_actor.actor_id JOIN film ON film.id = film_actor.film_id WHERE film.id = ?";
+		String sqlTxt = "SELECT * FROM film WHERE film.id = ?";
 		Film film = null;
 		List<Actor> actorList = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(URL, user, pass);
@@ -81,7 +82,7 @@ public class FilmDaoImpl  implements DatabaseAccessor {
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
-				actorList.add(new Actor(rs.getInt("actor.id"), rs.getString("first_name"), rs.getString("last_name")));
+				//actorList.add(new Actor(rs.getInt("actor.id"), rs.getString("first_name"), rs.getString("last_name")));
 				film.setLanguageList(findLanguageById(film.getLanguageID()));
 				film.setActorList(findActorsByFilmId(film.getId()));
 
@@ -242,6 +243,43 @@ public class FilmDaoImpl  implements DatabaseAccessor {
 		}
 		return null;
 	}
+	@Override
+	public boolean deleteFilm(int filmId) {
+		  Connection conn = null;
+		  try {
+		    conn = DriverManager.getConnection(URL, user, pass);
+		    conn.setAutoCommit(false); // START TRANSACTION
+		    
+		    String sql = "DELETE FROM film WHERE film.id = ?";
+		    PreparedStatement stmt = conn.prepareStatement(sql);
+		    stmt.setInt(1, filmId);
+		    int updateCount = stmt.executeUpdate();
+		    if (updateCount == 1) {
+		    	conn.commit();             // COMMIT TRANSACTION
+		    	stmt.close();
+		    	return true;
+		    }
+		  }
+		  catch (Exception sqle) {
+		    sqle.printStackTrace();
+		    if (conn != null) {
+		      try { conn.rollback(); }
+		      catch (Exception sqle2) {
+		        System.err.println("Error trying to rollback");
+		      }
+		    }
+		    return false;
+		  } finally {
+			  try {
+				  
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		  }
+		  return false;
+		}
 
 	class AutoRollBack implements AutoCloseable {
 

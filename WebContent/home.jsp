@@ -13,9 +13,10 @@
         <input type="text" name="filmId" /> <input
             type="submit" value="Select a film by id" />
     </form>
+    
     <hr>
     	<h3>Add a new Film</h3>
-    <form action="CreateFilm.do" method="GET">
+    <form action="CreateFilm.do" method="POST">
         Title: <input type="text" name="title" > <br> 
         Description: <input type="text" name="description" > <br> 
         Release year: <input type="number" name="releaseYear" MIN="1950" MAX="2020" step="1" > <br> 
