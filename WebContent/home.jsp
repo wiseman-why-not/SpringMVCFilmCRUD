@@ -8,7 +8,10 @@
 <title>Spring MVC Film Site</title>
 </head>
 <body>
-	<h1>Hey Morty</h1>
-	<p>This is where the films go</p>
+	<h3>Select a Film</h3>
+    <form action="FilmSelect.do" method="GET">
+        <input type="text" name="filmId" size="2" /> <input
+            type="submit" value="Select a film by id" />
+    </form>
 </body>
 </html>
