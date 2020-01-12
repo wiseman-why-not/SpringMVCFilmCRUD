@@ -9,13 +9,13 @@
 </head>
 <body>
     <form action="CreateFilm.do" method="POST">
-        Title: <input type="text" name="title" value ="${film.title }"> <br> 
-        Description: <input type="text" name="description" value="${film.description }"> <br> 
-        Release year: <input type="number" name="releaseYear" MIN="1950" MAX="2020" step="1" value="${film.releaseYear }" > <br> 
-        Rental Duration: <input type="number" name="rentalDuration" MIN="0" MAX="10" value="${film.rentalDuration }" > <br>
-        Rental Rate: <input type="number" name="rentalRate" step=".5" MIN="0" MAX="5" value= "${film.rentalRate }" > <br>
-        Length of Film (minutes): <input type="number" name="lengthOfMovie" step="1" MIN="0" MAX="999" value = "${film.length }"> <br>
-        Replacement Cost: <input type="number" name="replacementCost" step=".5" MIN="0" MAX="40"  value = "${film.replacementCost }"> <br>
+        Title: <input type="text" name="title" value ="${film.title }" > <br> 
+        Description: <input type="text" name="description" value="${film.description }" > <br> 
+        Release year: <input type="number" name="releaseYear" MIN="1950" MAX="2020" step="1" value="${film.releaseYear }" required > <br> 
+        Rental Duration: <input type="number" name="rentalDuration" MIN="0" MAX="10" value="${film.rentalDuration }" required > <br>
+        Rental Rate: <input type="number" name="rentalRate" step=".5" MIN="0" MAX="5" value= "${film.rentalRate }" required > <br>
+        Length of Film (minutes): <input type="number" name="lengthOfMovie" step="1" MIN="0" MAX="999" value = "${film.length }" required> <br>
+        Replacement Cost: <input type="number" name="replacementCost" step=".5" MIN="0" MAX="40"  value = "${film.replacementCost }" > <br>
         Movie Rating: <br>
         <input type="radio" name="rating" value="PG" > PG <br>
         <input type="radio" name="rating" value="G" > G <br>
