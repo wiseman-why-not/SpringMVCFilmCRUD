@@ -245,7 +245,6 @@ public class FilmDaoImpl implements DatabaseAccessor {
 				int filmId = keys.getInt(1);
 				film.setFilmId(filmId);
 			}
-			System.out.println("here");
 			committed = true;
 			autoBack.setcommitted(committed);
 			conn.commit();
