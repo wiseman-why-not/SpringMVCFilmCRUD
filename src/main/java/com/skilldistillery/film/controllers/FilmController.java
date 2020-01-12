@@ -67,9 +67,17 @@ public class FilmController {
 	@RequestMapping("Delete.do")
 	public String deleteFilm(@RequestParam("Delete") int filmId) {
 		dao = new FilmDaoImpl();
-	
-		dao.deleteFilm(filmId);
-		return "deleteFilm.jsp";
+
+
+		//ModelAndView mv = new ModelAndView();
+		if(dao.deleteFilm(filmId)) {
+			
+			return "deleteFilm.jsp";
+		}else 
+		{
+			return "Error.jsp";
+		}
+
 		
 
 	}
