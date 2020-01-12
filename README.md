@@ -4,8 +4,8 @@
 
 ### Topics/Technologies Used
 
-![GitHub small](/WebContent/images/Spring_Framework_logo_01.png)
-Format: ![Logo of Spring MVC](url)
+![GitHub-small](/WebContent/images/Spring_Framework_logo_01.png)
+
 + Java / Eclipse
 + Polymorphism, Inheritance, Encapsulation
 + Abstract and Interfaces
