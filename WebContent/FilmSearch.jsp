@@ -14,7 +14,7 @@
 		<c:when test="${!empty film }">
 			<table>
 				<tr>
-					<td>${film.id}</td>
+					<td>${film.filmId}</td>
 					<td>${film.title}</td>
 					<td>${film.description}</td>
 					<td>${film.releaseYear }</td>
@@ -26,11 +26,14 @@
 			<h3>NO FILM SELECTED</h3>
 		</c:otherwise>
 	</c:choose>
-	<c:if test="${film.id > 1000}">
+	<c:if test="${film.filmId > 1000}">
 		<form action="Delete.do" method="POST">
-			 <button type="submit" value="${film.id}" name="Delete"> Delete</button>
+			 <button type="submit" value="${film.filmId}" name="Delete"> Delete</button>
 		</form>
 	</c:if>
+	<form action="FilmEdit.do" method="POST">
+			 <button type="submit" value="${film.filmId}" name="filmId"> Update</button>
+		</form>
 	<a href= "home.jsp" > Return Home </a>
 </body>
 </html>

@@ -29,7 +29,6 @@ public class FilmController {
 		Film film = dao.findFilmById(filmId);
 		mv.setViewName("FilmSearch.jsp");
 		mv.addObject("film", film);
-		System.out.println("In createFilm()" + film);
 		return mv;
 	}
 
@@ -53,10 +52,30 @@ public class FilmController {
 	public String deleteFilm(@RequestParam("Delete") int filmId) {
 		dao = new FilmDaoImpl();
 		//ModelAndView mv = new ModelAndView();
-		System.out.println(filmId);
 		dao.deleteFilm(filmId);
 		return "deleteFilm.jsp";
 		
 
 	}
+	@RequestMapping("Update.do")
+	public String updateFilm(@RequestParam("Update") Film film) {
+		dao = new FilmDaoImpl();
+		//ModelAndView mv = new ModelAndView();
+		dao.updateFilm(film);
+		return "deleteFilm.jsp";
+	}
+		
+		
+		@RequestMapping("FilmEdit.do")
+		public ModelAndView filmEdit( int filmId) {
+			ModelAndView mv = new ModelAndView();
+			Film film = dao.findFilmById(filmId);
+			System.out.println(film);
+			mv.setViewName("FilmEdit.jsp");
+			mv.addObject(film);
+			return mv;
+		}
+			
+			
+	
 }

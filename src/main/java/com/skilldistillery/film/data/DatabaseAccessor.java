@@ -19,4 +19,6 @@ public interface DatabaseAccessor {
 
 	public boolean deleteFilm(int filmId);
 	
+	public boolean updateFilm(Film film);
+	
 }

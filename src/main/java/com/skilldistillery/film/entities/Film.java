@@ -2,14 +2,13 @@ package com.skilldistillery.film.entities;
 
 import java.util.List;
 
-
 public class Film {
 
 	private int id;
 	private String title;
 	private String description;
 	private int releaseYear;
-	private int languageID;
+	private int languageId;
 	private int rentalDuration;
 	private double rentalRate;
 	private int length;
@@ -23,14 +22,14 @@ public class Film {
 
 	}
 
-	public Film(int id, String title, String description, int releaseYear, int languageID, int rentalDuration,
+	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.releaseYear = releaseYear;
-		this.languageID = languageID;
+		this.languageId = languageId;
 		this.rentalDuration = rentalDuration;
 		this.rentalRate = rentalRate;
 		this.length = length;
@@ -38,13 +37,14 @@ public class Film {
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
 	}
-	public Film(String title, String description, int releaseYear, int languageID, int rentalDuration,
+
+	public Film(String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.releaseYear = releaseYear;
-		this.languageID = languageID;
+		this.languageId = languageId;
 		this.rentalDuration = rentalDuration;
 		this.rentalRate = rentalRate;
 		this.length = length;
@@ -59,7 +59,7 @@ public class Film {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + languageID;
+		result = prime * result + languageId;
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + releaseYear;
@@ -90,7 +90,7 @@ public class Film {
 			return false;
 		if (id != other.id)
 			return false;
-		if (languageID != other.languageID)
+		if (languageId != other.languageId)
 			return false;
 		if (length != other.length)
 			return false;
@@ -148,11 +148,11 @@ public class Film {
 		this.actorList = actorList;
 	}
 
-	public int getId() {
+	public int getFilmId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setFilmId(int id) {
 		this.id = id;
 	}
 
@@ -180,12 +180,12 @@ public class Film {
 		this.releaseYear = releaseYear;
 	}
 
-	public int getLanguageID() {
-		return languageID;
+	public int getLanguageId() {
+		return languageId;
 	}
 
-	public void setLanguageID(int languageID) {
-		this.languageID = languageID;
+	public void setLanguageId(int languageId) {
+		this.languageId = languageId;
 	}
 
 	public int getRentalDuration() {
