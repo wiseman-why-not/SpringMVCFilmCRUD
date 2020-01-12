@@ -69,9 +69,7 @@ public class FilmDaoImpl implements DatabaseAccessor {
 	@Override
 	public Film findFilmById(int filmId) {
 		int id = filmId;
-		// String sqlTxt = "SELECT * FROM actor JOIN film_actor ON actor.id =
-		// film_actor.actor_id JOIN film ON film.id = film_actor.film_id WHERE film.id =
-		// ?";
+
 		String sqlTxt = "SELECT * FROM film WHERE film.id = ?";
 		Film film = null;
 		List<Actor> actorList = new ArrayList<>();
@@ -83,8 +81,7 @@ public class FilmDaoImpl implements DatabaseAccessor {
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
-				// actorList.add(new Actor(rs.getInt("actor.id"), rs.getString("first_name"),
-				// rs.getString("last_name")));
+
 				film.setLanguageList(findLanguageById(film.getLanguageId()));
 				film.setActorList(findActorsByFilmId(film.getFilmId()));
 				film.setCategoryList(findCategoryByFilmId(film).getCategoryList());
@@ -143,13 +140,10 @@ public class FilmDaoImpl implements DatabaseAccessor {
 
 	@Override
 	public Film findCategoryByFilmId(Film film) {
-		//int id = filmId;
-		// String sqlTxt = "SELECT * FROM actor JOIN film_actor ON actor.id =
-		// film_actor.actor_id JOIN film ON film.id = film_actor.film_id WHERE film.id =
-		// ?";
+
 		String sqlTxt = "SELECT category.name FROM film join film_category ON film.id= film_category.film_id\n" + 
 				"					join category ON film_category.category_id=category.id WHERE film.id = ?";
-		//Film film = null;
+
 		List<String> categoryList = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(URL, user, pass);
 				PreparedStatement prepStmt = prepStatementGenerator(conn, sqlTxt, film.getFilmId());
@@ -305,7 +299,7 @@ public class FilmDaoImpl implements DatabaseAccessor {
 
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

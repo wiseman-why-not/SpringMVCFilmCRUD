@@ -44,37 +44,10 @@ public class FilmController {
 		}
 		
 	}
-	
-//	@RequestMapping("Keyword.do")
-//	public ModelAndView searchByKeyword(@RequestParam("filmId") String keyword) {
-//		dao = new FilmDaoImpl();
-//		ModelAndView mv = new ModelAndView();
-//		List<Film> listOfFilms = new ArrayList<>();
-//		listOfFilms = dao.findFilmByKeyword(keyword);
-//		mv.setViewName("FilmSearch.jsp");
-//		mv.addObject("film", listOfFilms);
-//		return mv;
-//	}
 
-//	@RequestMapping("CreateFilm.do")
-//	public ModelAndView createFilm(@RequestParam("title") String title, @RequestParam("description") String description,
-//			@RequestParam("releaseYear") int releaseYear, @RequestParam("rentalDuration") int rentalDuration,
-//			@RequestParam("rentalRate") double rentalRate, @RequestParam("lengthOfMovie") int length,
-//			@RequestParam("replacementCost") double replacementCost, @RequestParam("rating") String rating,
-//			@RequestParam("specialFeatures") String specialFeatures) {
-//		Film film = new Film(title, description, releaseYear, 1, rentalDuration, rentalRate, length, replacementCost,
-//				rating, specialFeatures);
-//		dao = new FilmDaoImpl();
-//		ModelAndView mv = new ModelAndView();
-//		film = dao.createFilm(film);
-//		mv.setViewName("FilmSearch.jsp");
-//		mv.addObject("film", film);
-//		return mv;
-//	}
 	@RequestMapping("CreateFilm.do")
 	public ModelAndView createFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("******** FILM ID (***** : " + film.getFilmId());
 		if (film.getFilmId() != 0) {
 			mv.setViewName("home.jsp");
 			updateFilm(film);
@@ -94,7 +67,7 @@ public class FilmController {
 	@RequestMapping("Delete.do")
 	public String deleteFilm(@RequestParam("Delete") int filmId) {
 		dao = new FilmDaoImpl();
-		//ModelAndView mv = new ModelAndView();
+	
 		dao.deleteFilm(filmId);
 		return "deleteFilm.jsp";
 		
@@ -103,7 +76,7 @@ public class FilmController {
 	@RequestMapping("Update.do")
 	public String updateFilm(@RequestParam("Update") Film film) {
 		dao = new FilmDaoImpl();
-		//ModelAndView mv = new ModelAndView();
+
 		if(dao.updateFilm(film)) {
 			return "home.jsp";
 			
