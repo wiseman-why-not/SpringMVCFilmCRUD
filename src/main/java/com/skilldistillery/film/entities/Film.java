@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Film {
 
-	private int id;
+	private int filmId;
 	private String title;
 	private String description;
 	private int releaseYear;
@@ -25,7 +25,7 @@ public class Film {
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
-		this.id = id;
+		this.filmId = id;
 		this.title = title;
 		this.description = description;
 		this.releaseYear = releaseYear;
@@ -58,7 +58,7 @@ public class Film {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
+		result = prime * result + filmId;
 		result = prime * result + languageId;
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
@@ -88,7 +88,7 @@ public class Film {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (id != other.id)
+		if (filmId != other.filmId)
 			return false;
 		if (languageId != other.languageId)
 			return false;
@@ -149,11 +149,11 @@ public class Film {
 	}
 
 	public int getFilmId() {
-		return id;
+		return filmId;
 	}
 
 	public void setFilmId(int id) {
-		this.id = id;
+		this.filmId = id;
 	}
 
 	public String getTitle() {

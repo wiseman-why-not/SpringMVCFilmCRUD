@@ -9,18 +9,17 @@
 </head>
 <body>
 	<h3>Select a Film</h3>
-    <form action="FilmSelect.do" method="GET">
-        <input type="text" name="filmId" /> <input
-            type="submit" value="Select a film by id" />
-    </form>
-    
-    <hr>
-    	<h3>Add a new Film</h3>
-		<form action="FilmEdit.jsp" method="POST">
-			 <button type="submit"  > Add a Film</button>
-		</form>
-    	
+	<form action="FilmSelect.do" method="GET">
+		<input type="text" name="filmId" /> <input type="submit"
+			value="Find Film!" />
+	</form>
 
-<br>
+	<hr>
+	<h3>Add a new Film</h3>
+	<form action="FilmEdit.do" method="POST">
+		<button type="submit" value="0" name="filmId">Add a Film</button>
+	</form>
+	<hr>
+
 </body>
 </html>

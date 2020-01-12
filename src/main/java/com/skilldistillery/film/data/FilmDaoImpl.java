@@ -290,23 +290,24 @@ public class FilmDaoImpl implements DatabaseAccessor {
 		  try {
 		    conn = DriverManager.getConnection(URL, user, pass);
 		    conn.setAutoCommit(false); // START TRANSACTION
-		    String sqlTxt = "UPDATE film  (title, description,release_year, language_id, rental_duration, rental_rate, length, replacement_cost , rating, special_features)"
-					+ "VALUES(?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		    String sqlTxt = "UPDATE film  set title = ?, description = ?, release_year = ?, rental_duration = ?, rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?"
+					+ " WHERE film.id = ?";
 		    PreparedStatement prepStmt = conn.prepareStatement(sqlTxt);
 		    prepStmt.setString(1, film.getTitle());
 			prepStmt.setString(2, film.getDescription());
 			prepStmt.setInt(3, film.getReleaseYear());
-			prepStmt.setInt(4, film.getLanguageId());
-			prepStmt.setInt(5, film.getRentalDuration());
-			prepStmt.setDouble(6, film.getRentalRate());
-			prepStmt.setInt(7, film.getLength());
-			prepStmt.setDouble(8, film.getReplacementCost());
-			prepStmt.setString(9, film.getRating());
-			prepStmt.setString(10, film.getSpecialFeatures());
+			prepStmt.setInt(4, film.getRentalDuration());
+			prepStmt.setDouble(5, film.getRentalRate());
+			prepStmt.setInt(6, film.getLength());
+			prepStmt.setDouble(7, film.getReplacementCost());
+			prepStmt.setString(8, film.getRating());
+			prepStmt.setString(9, film.getSpecialFeatures());
+			prepStmt.setInt(10, film.getFilmId());
 		    int updateCount = prepStmt.executeUpdate();
 		    if (updateCount == 1) {
 				// COMMIT TRANSACTION
 		    	conn.commit();
+		    	prepStmt.close();
 		    	return true;
 		  
 		    }
