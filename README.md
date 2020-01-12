@@ -5,7 +5,7 @@
 ### Topics/Technologies Used
 
 
-![GitHub logo](/WebContent/images/Spring_Framework_logo_01.png = 100x20)
+![GitHub Logo](/WebContent/images/Spring_Framework_logo_01.png =100x20)
 
 + Java / Eclipse
 + Polymorphism, Inheritance, Encapsulation
