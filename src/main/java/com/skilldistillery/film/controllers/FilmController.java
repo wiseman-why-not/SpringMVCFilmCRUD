@@ -95,8 +95,13 @@ public class FilmController {
 	public String deleteFilm(@RequestParam("Delete") int filmId) {
 		dao = new FilmDaoImpl();
 		//ModelAndView mv = new ModelAndView();
-		dao.deleteFilm(filmId);
-		return "deleteFilm.jsp";
+		if(dao.deleteFilm(filmId)) {
+			
+			return "deleteFilm.jsp";
+		}else 
+		{
+			return "Error.jsp";
+		}
 		
 
 	}
