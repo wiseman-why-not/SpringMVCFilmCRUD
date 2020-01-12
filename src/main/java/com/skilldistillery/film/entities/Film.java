@@ -17,6 +17,15 @@ public class Film {
 	private String specialFeatures;
 	List<Actor> actorList;
 	List<String> languageList;
+	List<String> categoryList;
+
+	public List<String> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<String> categoryList) {
+		this.categoryList = categoryList;
+	}
 
 	public Film() {
 
@@ -122,8 +131,11 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film title=" + title + ", description=" + description + ",\n releaseYear=" + releaseYear + ", rating="
-				+ rating + ", languageList=" + languageList + ",\n actorList=" + actorList;
+		return "Film [filmId=" + filmId + ", title=" + title + ", description=" + description + ", releaseYear="
+				+ releaseYear + ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate="
+				+ rentalRate + ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
+				+ ", specialFeatures=" + specialFeatures + ", actorList=" + actorList + ", languageList=" + languageList
+				+ ", catagoryList=" + categoryList + "]";
 	}
 
 	public List<String> getLanguageList() {

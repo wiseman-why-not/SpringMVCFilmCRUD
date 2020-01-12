@@ -20,8 +20,15 @@
 					<td>${film.description}</td>
 					<td>${film.releaseYear }</td>
 					<td>${film.rating }</td>
+
 				</tr>
 			</table>
+			
+			<h3>List of Actors</h3>
+			<h5>${film.actorList }</h5>
+			
+			<h3>Category List</h3>
+			<h5>${film.categoryList }</h5>
 			<c:if test="${film.filmId > 1000}">
 		<form action="Delete.do" method="POST">
 			 <button type="submit" value="${film.filmId}" name="Delete"> Delete</button>
@@ -30,6 +37,8 @@
 	<form action="FilmEdit.do" method="POST" >
 			 <button type="submit" value="${film.filmId}" name="filmId"> Update</button>
 		</form>
+		<br>
+		<hr>
 			</c:forEach>
 		</c:when>
 		

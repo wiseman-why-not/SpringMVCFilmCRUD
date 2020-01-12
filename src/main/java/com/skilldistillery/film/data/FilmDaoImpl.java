@@ -87,6 +87,8 @@ public class FilmDaoImpl implements DatabaseAccessor {
 				// rs.getString("last_name")));
 				film.setLanguageList(findLanguageById(film.getLanguageId()));
 				film.setActorList(findActorsByFilmId(film.getFilmId()));
+				film.setCategoryList(findCategoryByFilmId(film).getCategoryList());
+
 
 			}
 
@@ -140,6 +142,31 @@ public class FilmDaoImpl implements DatabaseAccessor {
 	}
 
 	@Override
+	public Film findCategoryByFilmId(Film film) {
+		//int id = filmId;
+		// String sqlTxt = "SELECT * FROM actor JOIN film_actor ON actor.id =
+		// film_actor.actor_id JOIN film ON film.id = film_actor.film_id WHERE film.id =
+		// ?";
+		String sqlTxt = "SELECT category.name FROM film join film_category ON film.id= film_category.film_id\n" + 
+				"					join category ON film_category.category_id=category.id WHERE film.id = ?";
+		//Film film = null;
+		List<String> categoryList = new ArrayList<>();
+		try (Connection conn = DriverManager.getConnection(URL, user, pass);
+				PreparedStatement prepStmt = prepStatementGenerator(conn, sqlTxt, film.getFilmId());
+				ResultSet rs = prepStmt.executeQuery();) {
+			while (rs.next()) {
+				categoryList.add(rs.getString("category.name"));
+				film.setCategoryList(categoryList);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return film;
+	}
+	
+	@Override
 	public List<Film> findFilmByKeyword(String keyWord) {
 		String keyword = keyWord;
 		String sqlTxt = "SELECT * FROM film WHERE film.title LIKE ? OR film.description LIKE ?";
@@ -154,6 +181,7 @@ public class FilmDaoImpl implements DatabaseAccessor {
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
 				film.setActorList(findActorsByFilmId(film.getFilmId()));
+				film.setCategoryList(findCategoryByFilmId(film).getCategoryList());
 				film.setLanguageList(findLanguageById(film.getLanguageId()));
 				filmList.add(film);
 

@@ -19,8 +19,16 @@
 					<td>${film.description}</td>
 					<td>${film.releaseYear }</td>
 					<td>${film.rating }</td>
+					
 				</tr>
 			</table>
+			<h3>List of Actors</h3>
+			<h5>${film.actorList }</h5>
+			
+			<h3>Category List</h3>
+			<h5>${film.categoryList }</h5>
+			<br>
+			
 		</c:when>
 		<c:otherwise>
 			<h3>NO FILM SELECTED</h3>
@@ -34,6 +42,8 @@
 	<form action="FilmEdit.do" method="POST">
 			 <button type="submit" value="${film.filmId}" name="filmId"> Update</button>
 		</form>
+		<br>
+		<hr>
 	<a href= "home.jsp" > Return Home </a>
 </body>
 </html>
