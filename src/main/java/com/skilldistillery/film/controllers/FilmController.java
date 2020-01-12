@@ -28,9 +28,9 @@ public class FilmController {
 	public ModelAndView searchByFilmId(@RequestParam("filmId") String keyword) {
 		dao = new FilmDaoImpl();
 		ModelAndView mv = new ModelAndView();
-		
+
 		try {
-			
+
 			Film film = dao.findFilmById(Integer.parseInt(keyword));
 			mv.setViewName("FilmSearch.jsp");
 			mv.addObject("film", film);
@@ -42,7 +42,7 @@ public class FilmController {
 			mv.addObject("films", listOfFilms);
 			return mv;
 		}
-		
+
 	}
 
 	@RequestMapping("CreateFilm.do")
@@ -53,9 +53,9 @@ public class FilmController {
 			updateFilm(film);
 			return mv;
 		}
-			
-		
-		Film filmChange = new Film(film.getTitle(), film.getDescription(), film.getReleaseYear(), 1, film.getRentalDuration(), film.getRentalRate(), film.getLength(), film.getReplacementCost(),
+
+		Film filmChange = new Film(film.getTitle(), film.getDescription(), film.getReleaseYear(), 1,
+				film.getRentalDuration(), film.getRentalRate(), film.getLength(), film.getReplacementCost(),
 				film.getRating(), film.getSpecialFeatures());
 		dao = new FilmDaoImpl();
 		film = dao.createFilm(filmChange);
@@ -68,49 +68,42 @@ public class FilmController {
 	public String deleteFilm(@RequestParam("Delete") int filmId) {
 		dao = new FilmDaoImpl();
 
+		// ModelAndView mv = new ModelAndView();
+		if (dao.deleteFilm(filmId)) {
 
-		//ModelAndView mv = new ModelAndView();
-		if(dao.deleteFilm(filmId)) {
-			
 			return "deleteFilm.jsp";
-		}else 
-		{
+		} else {
 			return "Error.jsp";
 		}
 
-		
-
 	}
+
 	@RequestMapping("Update.do")
 	public String updateFilm(@RequestParam("Update") Film film) {
 		dao = new FilmDaoImpl();
 
-		if(dao.updateFilm(film)) {
+		if (dao.updateFilm(film)) {
 			return "home.jsp";
-			
-		}else {
+
+		} else {
 			return "Error.jsp";
 		}
 	}
-		
-		
-		@RequestMapping("FilmEdit.do")
-		public ModelAndView filmEdit( int filmId) {
-			ModelAndView mv = new ModelAndView();
-			if (filmId == 0) { 
-				Film newFilm = new Film("placeholder", "placeholder", 2020, 1, 2, 2.5, 60, 20, "PG", "Trailers");
-				mv.setViewName("FilmEdit.jsp");
-				mv.addObject(newFilm);
-				return mv;
-			}
-			Film film = dao.findFilmById(filmId);
 
-			
+	@RequestMapping("FilmEdit.do")
+	public ModelAndView filmEdit(int filmId) {
+		ModelAndView mv = new ModelAndView();
+		if (filmId == 0) {
+			Film newFilm = new Film("placeholder", "placeholder", 2020, 1, 2, 2.5, 60, 20, "PG", "Trailers");
 			mv.setViewName("FilmEdit.jsp");
-			mv.addObject(film);
+			mv.addObject(newFilm);
 			return mv;
 		}
-			
-			
-	
+		Film film = dao.findFilmById(filmId);
+
+		mv.setViewName("FilmEdit.jsp");
+		mv.addObject(film);
+		return mv;
+	}
+
 }
