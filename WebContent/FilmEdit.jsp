@@ -30,5 +30,7 @@
         <input type="hidden" value="${film.filmId }" name="filmId">
         <input type="submit" value="Submit" />
     </form>
+    <br>
+    <a href= "home.jsp" > Return Home </a>
 </body>
 </html>

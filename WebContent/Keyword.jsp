@@ -48,5 +48,6 @@
 	</c:choose>
 
 	<a href= "home.jsp" > Return Home </a>
+	
 </body>
 </html>

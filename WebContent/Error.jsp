@@ -8,6 +8,7 @@
 </head>
 <body>
 <h2>Oops! Something went wrong </h2>
+<br>
 <a href= "home.jsp" > Return Home </a>
 
 </body>
