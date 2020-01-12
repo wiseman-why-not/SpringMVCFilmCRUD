@@ -48,7 +48,4 @@
 
 
 
-![GitHub Logo](/WebContent/images/Spring_Framework_logo_01.png)
-
-
 
