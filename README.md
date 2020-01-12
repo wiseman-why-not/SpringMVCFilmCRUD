@@ -1,10 +1,11 @@
 ## Spring MVC Film C.R.U.D. Project
 
-## Objectives
+### Objectives
 
 ### Topics/Technologies Used
 
-![GitHub-small](/WebContent/images/Spring_Framework_logo_01.png)
+
+![GitHub-small](/WebContent/images/Spring_Framework_logo_01.png = 100x20)
 
 + Java / Eclipse
 + Polymorphism, Inheritance, Encapsulation
