@@ -39,9 +39,11 @@
 			 <button type="submit" value="${film.filmId}" name="Delete"> Delete</button>
 		</form>
 	</c:if>
+	<c:if test="${film.filmId == 0 }">
 	<form action="FilmEdit.do" method="POST">
 			 <button type="submit" value="${film.filmId}" name="filmId"> Update</button>
 		</form>
+		</c:if>
 		<br>
 		<hr>
 	<a href= "home.jsp" > Return Home </a>
