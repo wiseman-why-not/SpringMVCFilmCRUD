@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
-@Controller
+@Component
 public class FilmDaoImpl implements DatabaseAccessor {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
